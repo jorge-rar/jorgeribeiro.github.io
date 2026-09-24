@@ -209,3 +209,122 @@ if (
     );
 
 }
+
+
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
+
+const mobileMenuButton =
+    document.querySelector(".mobile-menu-button");
+
+const mainNavigation =
+    document.querySelector("#main-navigation");
+
+
+if (
+    mobileMenuButton &&
+    mainNavigation
+) {
+
+    mobileMenuButton.addEventListener(
+        "click",
+        (event) => {
+
+            event.stopPropagation();
+
+            const isOpen =
+                mainNavigation.classList.toggle(
+                    "is-open"
+                );
+
+
+            mobileMenuButton.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+
+        }
+    );
+
+
+    mainNavigation
+        .querySelectorAll("a")
+        .forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    mainNavigation.classList.remove(
+                        "is-open"
+                    );
+
+
+                    mobileMenuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+            );
+
+        });
+
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                !mainNavigation.contains(
+                    event.target
+                ) &&
+                !mobileMenuButton.contains(
+                    event.target
+                )
+            ) {
+
+                mainNavigation.classList.remove(
+                    "is-open"
+                );
+
+
+                mobileMenuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                mainNavigation.classList.remove(
+                    "is-open"
+                );
+
+
+                mobileMenuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                mobileMenuButton.focus();
+
+            }
+
+        }
+    );
+
+}

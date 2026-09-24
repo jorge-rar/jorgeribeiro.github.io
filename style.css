@@ -174,6 +174,11 @@ nav {
 }
 
 
+.mobile-menu-button {
+    display: none;
+}
+
+
 nav a {
 
     font-size: 12px;
@@ -1607,8 +1612,84 @@ footer {
 
 
     nav {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 18px 25px 22px;
+        background: rgba(17, 17, 15, 0.98);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease,
+            visibility 0.2s ease;
+        z-index: 90;
+    }
 
-        display: none;
+
+    nav.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+    .mobile-menu-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        background: transparent;
+        border: 1px solid #66655f;
+        cursor: pointer;
+        z-index: 101;
+    }
+
+
+    .mobile-menu-button span {
+        display: block;
+        width: 16px;
+        height: 1px;
+        background: #c7c6bf;
+        transition:
+            transform 0.2s ease,
+            opacity 0.2s ease,
+            background 0.2s ease;
+    }
+
+
+    nav a {
+        display: block;
+        padding: 12px 0;
+        font-size: 11px;
+        letter-spacing: 2px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    
+    nav a:last-child {
+        border-bottom: none;
+    }
+
+
+    .mobile-menu-button:hover {
+        border-color: var(--orange);
+    }
+
+
+    .mobile-menu-button:hover span {
+        background: var(--orange);
     }
 
 
@@ -1693,7 +1774,7 @@ footer {
         width: 100%;
     }
 
-    
+
     .section {
 
         padding:
