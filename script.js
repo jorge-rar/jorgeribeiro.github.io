@@ -110,3 +110,95 @@ function typeRole() {
 
 
 typeRole();
+
+
+/* =========================================
+   CURRICULUM DROPDOWN
+========================================= */
+
+const curriculumDropdown =
+    document.querySelector(".curriculum-dropdown");
+
+const curriculumButton =
+    document.querySelector(".curriculum-button");
+
+
+if (
+    curriculumDropdown &&
+    curriculumButton
+) {
+
+    curriculumButton.addEventListener(
+        "click",
+        (event) => {
+
+            event.stopPropagation();
+
+            const isOpen =
+                curriculumDropdown.classList.toggle(
+                    "is-open"
+                );
+
+
+            curriculumButton.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+
+        }
+    );
+
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                !curriculumDropdown.contains(
+                    event.target
+                )
+            ) {
+
+                curriculumDropdown.classList.remove(
+                    "is-open"
+                );
+
+
+                curriculumButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                curriculumDropdown.classList.remove(
+                    "is-open"
+                );
+
+
+                curriculumButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                curriculumButton.focus();
+
+            }
+
+        }
+    );
+
+}
