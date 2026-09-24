@@ -34,6 +34,11 @@ function typeRole() {
         roles[roleIndex];
 
 
+    if (!typingElement) {
+        return;
+    }
+
+
     if (!deleting) {
 
         typingElement.textContent =
@@ -109,7 +114,9 @@ function typeRole() {
 }
 
 
-typeRole();
+if (typingElement) {
+    typeRole();
+}
 
 
 /* =========================================
